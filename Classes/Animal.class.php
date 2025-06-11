@@ -1,21 +1,25 @@
 <?php
-class Animal{
+class Animal {
     public $Nome;
-    public $Raça;
+    public $Raca;
     public $Idade;
-    public $Peso;
-    public $Porte;
-    public $Cor;
     public $Sexo;
+    public $StatusAdocao;
 
-    public function miar(){
-        return "<br>Miau!";
-}
-    public function dormir(){
-    return "<br>Dormindo";
-}
-    public function comer(){
-        return "<br>Comendo";
-}
+    public function brincar() {
+        echo "<br>" . $this->Nome . " está brincando feliz no pátio!";
+    }
+
+    public function comer($comida) {
+        echo "<br>" . $this->Nome . " está comendo " . $comida . " e parece muito feliz!";
+    }
+
+    public function dormir() {
+        echo "<br>" . $this->Nome . " está dormindo.";
+    }
+
+    public function mostrarStatus() {
+        echo "<br>Status de adoção de " . $this->Nome . ": " . $this->StatusAdocao->statusAtual();
+    }
 }
 ?>
