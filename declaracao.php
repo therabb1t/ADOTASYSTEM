@@ -10,19 +10,19 @@ $animal->Raca = "Cachorro";
 $animal->Idade = 10;
 $animal->Sexo = "Macho";
 
+$funcionario = new Funcionario();
+$funcionario->Nome = "Sandro";
+$funcionario->Cargo = "Atendente";
+$funcionario->exibirDados();
+$funcionario->registrarAnimal($animal);
+
 $status = new StatusAdocao();
 $status->atualizar("Disponível");
 $animal->StatusAdocao = $status;
 
-$funcionario = new Funcionario();
-$funcionario->Nome = "Sandro";
-$funcionario->Cargo = "Atendente";
-
 $cliente = new Cliente();
 $cliente->Nome = "Ana";
 $cliente->CPF = "000.000.000-00";
-
-$funcionario->registrarAnimal($animal);
 
 $animal->brincar();
 $animal->comer("ração");
@@ -32,5 +32,4 @@ $animal->mostrarStatus();
 $cliente->visitarAnimal($animal);
 $cliente->adotar($animal);
 $animal->mostrarStatus();
-$funcionario->exibirDados();
 ?>
