@@ -1,25 +1,78 @@
 <?php
+
 class Animal {
-    public $Nome;
-    public $Raca;
-    public $Idade;
-    public $Sexo;
-    public $StatusAdocao;
+    public $nome;
+    public $especie;
+    public $idade;
+    public $sexo;
+    public $peso;
+    public $cor;
+    public $status;
+    public $chipado = 0;
 
-    public function brincar() {
-        echo "<br>" . $this->Nome . " está brincando feliz no pátio!";
+    public function exibirFicha() {
+        return "
+        - nome: {$this->nome}<br>
+        - especie: {$this->especie}<br>
+        - idade: {$this->idade} anos<br>
+        - sexo: " . $this->verificarSexo() . "<br>
+        - peso: {$this->peso}kg<br>
+        - cor: {$this->cor}<br>
+        - status: " . $this->verificarDisponibilidade() . "<br>
+        - chipado: " . $this->verificarChipado() . "<br>
+        ";
+    }
+    public function resumoAnimal() {
+        return "o animal se chama {$this->nome}, sua espécie é {$this->especie} e está  " . $this->verificarDisponibilidade() . ".<br>";
     }
 
-    public function comer($comida) {
-        echo "<br>" . $this->Nome . " está comendo " . $comida . " e parece muito feliz!";
+    public function verificarDisponibilidade() {
+        if ($this->status > 0) {
+            return "disponível";
+        } else {
+            return "indisponível";
+        }
+    }
+    public function verificarIdade() {
+        if ($this->idade < 2) {
+            return "filhote";
+        } if ($this->idade > 1 && $this->idade < 8) {
+            return "adulto(a)";
+        } else {
+            return "idoso(a)";
+        }
+    }
+    public function verificarChipado() {
+        if ($this->chipado > 0) {
+            return "está chipado(a)";
+        } else {
+            return "não está chipado(a)";
+        }
+    }
+    public function verificarSexo() {
+        if ($this->sexo > 0) {
+            return "fêmea";
+        } else {
+            return "macho";
+        }
     }
 
-    public function dormir() {
-        echo "<br>" . $this->Nome . " está dormindo.";
+    
+    public function atualizarPeso($peso) {
+        $this->peso = $peso;
     }
-
-    public function mostrarStatus() {
-        echo "<br>Status de adoção de " . $this->Nome . ": " . $this->StatusAdocao->statusAtual();
+    public function marcarChipado() {
+        if ($this->chipado == 0) { 
+            $this->chipado = 1;
+        }
+    }
+    public function desmarcarChipado() {
+        if ($this->chipado == 1) { 
+            $this->chipado = 0;
+        }
+    }
+    public function alterarStatus($novoStatus) {
+        $this->status = $novoStatus;
     }
 }
 ?>

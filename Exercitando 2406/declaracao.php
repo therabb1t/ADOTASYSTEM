@@ -10,6 +10,7 @@ $animal->Raca = "Cachorro";
 $animal->Idade = 10;
 $animal->Sexo = "Macho";
 
+
 $funcionario = new Funcionario();
 $funcionario->Nome = "Sandro";
 $funcionario->Cargo = "Atendente";
